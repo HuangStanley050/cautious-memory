@@ -25,8 +25,8 @@ ul {
 }
 
 body {
-  background: rgb(100,0,123);
-  background: radial-gradient(circle, rgba(100,0,123,1) 0%, rgba(62,20,86,1) 100%);
+  background: dodgerBlue;
+  background: radial-gradient(circle, dodgerBlue 0%, dodgerBlue 100%);
   overflow: hidden;
 }
 
