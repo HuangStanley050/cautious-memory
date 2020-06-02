@@ -18,7 +18,9 @@ const Layout = ({ children }) => {
           </svg>
         </div>
         <div className="title">
-          <h1>Pizza Joint</h1>>
+          <Link href="/">
+            <h1 style={{ cursor: "pointer" }}>Pizza Joint</h1>
+          </Link>
         </div>
       </header>
       <div>{children}</div>
