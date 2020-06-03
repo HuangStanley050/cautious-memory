@@ -5,3 +5,10 @@ export const makeBase = (base) => {
     payload: base,
   };
 };
+
+export const addIngredient = (topping) => {
+  return {
+    type: actionTypes.ADD_TOP,
+    payload: topping,
+  };
+};

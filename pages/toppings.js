@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { connect } from "react-redux";
+import { addIngredient } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
 
-const Toppings = () => {
+const Toppings = ({ pizza, addTopping }) => {
   let toppings = [
     "mushrooms",
     "peppers",
@@ -17,14 +19,14 @@ const Toppings = () => {
       <div className="toppings container">
         <h3>Step 2: Choose Toppings</h3>
         <ul>
-          {/*toppings.map((topping) => {
+          {toppings.map((topping) => {
             let spanClass = pizza.toppings.includes(topping) ? "active" : "";
             return (
               <li key={topping} onClick={() => addTopping(topping)}>
                 <span className={spanClass}>{topping}</span>
               </li>
             );
-          })*/}
+          })}
         </ul>
 
         <Link href="/order">
@@ -34,5 +36,11 @@ const Toppings = () => {
     </Layout>
   );
 };
-
-export default Toppings;
+const mapState = (state) => ({
+  pizza: state.pizza,
+});
+const mapDispatch = (dispatch) => ({
+  addTopping: (topping) => dispatch(addIngredient(topping)),
+});
+//onClick={() => addTopping(topping)}
+export default connect(mapState, mapDispatch)(Toppings);
