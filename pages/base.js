@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
+import { makeBase } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
 
-const Base = ({ pizza }) => {
+const Base = ({ pizza, addBase }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
   return (
@@ -14,7 +15,7 @@ const Base = ({ pizza }) => {
           {bases.map((base) => {
             let spanClass = pizza.base === base ? "active" : "";
             return (
-              <li key={base}>
+              <li key={base} onClick={() => addBase(base)}>
                 <span className={spanClass}>{base}</span>
               </li>
             );
@@ -35,4 +36,7 @@ const Base = ({ pizza }) => {
 const mapState = (state) => ({
   pizza: state.pizza,
 });
-export default connect(mapState)(Base);
+const mapDispatch = (dispatch) => ({
+  addBase: (base) => dispatch(makeBase(base)),
+});
+export default connect(mapState, mapDispatch)(Base);
