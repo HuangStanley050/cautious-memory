@@ -21,6 +21,7 @@ const Layout = ({ children }) => {
         <motion.div
           initial={{ y: -250 }}
           animate={{ y: -10 }}
+          transition={{ type: "spring", delay: 0.2, stiffness: 150 }}
           className="title"
         >
           <Link href="/">
