@@ -1,14 +1,24 @@
 import "./style.css";
 import React from "react";
-//import { createStore } from 'redux';
+
+import { AnimatePresence, motion } from "framer-motion";
+
 import { Provider } from "react-redux";
 import App from "next/app";
-//import withRedux from "next-redux-wrapper";
+import { useRouter } from "next/router";
+
 import { wrapper } from "../store/setupStore";
+
+function handleExitComplete() {
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0 });
+  }
+}
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-  return <Component {...pageProps} />;
+  const router = useRouter();
+  return <Component {...pageProps} key={router.route} />;
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
