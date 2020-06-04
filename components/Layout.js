@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 const Layout = ({ children }) => {
   return (
     <div>
@@ -17,11 +18,15 @@ const Layout = ({ children }) => {
             <path fill="none" d="M50 30 L50 -10 C50 -10 90 -10 90 30 Z" />
           </svg>
         </div>
-        <div className="title">
+        <motion.div
+          initial={{ y: -250 }}
+          animate={{ y: -10 }}
+          className="title"
+        >
           <Link href="/">
             <h1 style={{ cursor: "pointer" }}>Pizza Joint</h1>
           </Link>
-        </div>
+        </motion.div>
       </header>
       <div>{children}</div>
     </div>

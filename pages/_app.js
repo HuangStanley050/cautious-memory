@@ -1,8 +1,6 @@
 import "./style.css";
 import React from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 import { Provider } from "react-redux";
 import App from "next/app";
 import { useRouter } from "next/router";

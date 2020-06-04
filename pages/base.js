@@ -9,31 +9,33 @@ const Base = ({ pizza, addBase }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
   return (
-    <motion.div>
-      <Layout>
-        <div className="base container">
-          <h3>Step 1: Choose Your Base</h3>
-          <ul>
-            {bases.map((base) => {
-              let spanClass = pizza.base === base ? "active" : "";
-              return (
-                <li key={base} onClick={() => addBase(base)}>
-                  <span className={spanClass}>{base}</span>
-                </li>
-              );
-            })}
-          </ul>
+    <Layout>
+      <div className="base container">
+        <h3>Step 1: Choose Your Base</h3>
+        <ul>
+          {bases.map((base) => {
+            let spanClass = pizza.base === base ? "active" : "";
+            return (
+              <li key={base} onClick={() => addBase(base)}>
+                <span className={spanClass}>{base}</span>
+              </li>
+            );
+          })}
+        </ul>
 
-          {pizza.base && (
-            <div className="next">
-              <Link href="/toppings">
-                <button>Next</button>
-              </Link>
-            </div>
-          )}
-        </div>
-      </Layout>
-    </motion.div>
+        {pizza.base && (
+          <motion.div
+            className="next"
+            animate={{ x: 0 }}
+            initial={{ x: "-100vw" }}
+          >
+            <Link href="/toppings">
+              <button>Next</button>
+            </Link>
+          </motion.div>
+        )}
+      </div>
+    </Layout>
   );
 };
 const mapState = (state) => ({
