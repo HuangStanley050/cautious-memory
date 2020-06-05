@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 import { addIngredient } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
 
@@ -30,7 +31,15 @@ const Toppings = ({ pizza, addTopping }) => {
         </ul>
 
         <Link href="/order">
-          <button>Order</button>
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              textShadow: "0px 0px 8px rgb(255,255,255)",
+              boxShadow: "0px 0px 8px rgb(255,255,255)",
+            }}
+          >
+            Order
+          </motion.button>
         </Link>
       </div>
     </Layout>
