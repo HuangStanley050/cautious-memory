@@ -5,6 +5,34 @@ import { makeBase } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: {
+    x: "100vw",
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 1.2,
+    },
+  },
+};
+
+const nextVariants = {
+  hidden: {
+    x: "-100vw",
+  },
+  visible: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 150,
+    },
+  },
+};
+
 const Base = ({ pizza, addBase }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
@@ -12,9 +40,9 @@ const Base = ({ pizza, addBase }) => {
     <Layout>
       <motion.div
         className="base container"
-        animate={{ x: 0 }}
-        transition={{ type: "spring", delay: 0.5 }}
-        initial={{ x: "100vw" }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
         <h3>Step 1: Choose Your Base</h3>
         <ul>
@@ -36,9 +64,9 @@ const Base = ({ pizza, addBase }) => {
         {pizza.base && (
           <motion.div
             className="next"
-            animate={{ x: 0 }}
-            initial={{ x: "-100vw" }}
-            transition={{ type: "spring", stiffness: 150 }}
+            variants={nextVariants}
+            initial="hidden"
+            animate="visible"
           >
             <Link href="/toppings">
               <motion.button
