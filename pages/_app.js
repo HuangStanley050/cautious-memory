@@ -14,7 +14,7 @@ function handleExitComplete() {
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-  return <Component {...pageProps} key={router.route} />;
+  return <Component {...pageProps} />;
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
