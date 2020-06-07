@@ -3,7 +3,6 @@ import React from "react";
 
 import { Provider } from "react-redux";
 import App from "next/app";
-import { useRouter } from "next/router";
 
 import { wrapper } from "../store/setupStore";
 
@@ -15,7 +14,6 @@ function handleExitComplete() {
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-  const router = useRouter();
   return <Component {...pageProps} key={router.route} />;
 }
 
