@@ -1,0 +1,15 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-framermotionnextjs-local-103414-authRole",
+            "UnauthRoleArn": "arn:aws:iam::019137212646:role/amplify-framermotionnextjs-local-103414-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::019137212646:role/amplify-framermotionnextjs-local-103414-authRole",
+            "Region": "ap-southeast-2",
+            "DeploymentBucketName": "amplify-framermotionnextjs-local-103414-deployment",
+            "UnauthRoleName": "amplify-framermotionnextjs-local-103414-unauthRole",
+            "StackName": "amplify-framermotionnextjs-local-103414",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:019137212646:stack/amplify-framermotionnextjs-local-103414/9e036d60-a856-11ea-b9c0-025411181be4",
+            "AmplifyAppId": "d16xr0yj8qsqsh"
+        }
+    }
+}
