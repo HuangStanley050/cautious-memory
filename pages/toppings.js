@@ -4,7 +4,20 @@ import { connect } from "react-redux";
 import { motion } from "framer-motion";
 import { addIngredient } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
-
+const containerVariants = {
+  hidden: {
+    x: "100vw",
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      delay: 1.2,
+    },
+  },
+};
 const Toppings = ({ pizza, addTopping }) => {
   let toppings = [
     "mushrooms",
@@ -17,7 +30,12 @@ const Toppings = ({ pizza, addTopping }) => {
 
   return (
     <Layout>
-      <div className="toppings container">
+      <motion.div
+        className="toppings container"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <h3>Step 2: Choose Toppings</h3>
         <ul>
           {toppings.map((topping) => {
@@ -46,7 +64,7 @@ const Toppings = ({ pizza, addTopping }) => {
             Order
           </motion.button>
         </Link>
-      </div>
+      </motion.div>
     </Layout>
   );
 };
