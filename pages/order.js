@@ -13,8 +13,10 @@ const containerVariants = {
     opacity: 1,
     transition: {
       type: "spring",
-      delay: 1.2,
+      mass: 0.4,
+      damping: 8,
       when: "beforeChildren",
+      staggerChildren: 0.7,
     },
   },
 };
