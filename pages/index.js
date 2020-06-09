@@ -5,7 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const buttonVariants = {
   hover: {
-    scale: [1, 1.1, 1, 1.1, 1],
+    scale: 1.1,
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity,
+    },
     textShadow: "0px 0px 8px rgb(255,255,255)",
     boxShadow: "0px 0px 8px rgb(255,255,255)",
   },
@@ -21,11 +25,7 @@ const Home = () => {
       >
         <h2>Welcome to Pizza Joint</h2>
         <Link href="/base">
-          <motion.button
-            variants={buttonVariants}
-            whileHover="hover"
-            animate="visible"
-          >
+          <motion.button variants={buttonVariants} whileHover="hover">
             Create Your Pizza
           </motion.button>
         </Link>
