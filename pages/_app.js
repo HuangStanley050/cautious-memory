@@ -1,6 +1,7 @@
 import "./style.css";
 import React from "react";
-
+import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import App from "next/app";
 
@@ -14,7 +15,15 @@ function handleExitComplete() {
 
 // This default export is required in a new `pages/_app.js` file.
 function MyApp({ Component, pageProps, store }) {
-  return <Component {...pageProps} />;
+  const router = useRouter();
+  //onExitComplete={handleExitComplete}
+  return (
+    <>
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} route={router.route} key={router.route} />
+      </AnimatePresence>
+    </>
+  );
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
