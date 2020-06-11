@@ -1,7 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const reducer = (
-  state = { base: "", toppings: [], showModal: false },
+  state = { base: "", toppings: [], showModal: true },
   action
 ) => {
   switch (action.type) {
