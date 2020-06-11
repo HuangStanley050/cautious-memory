@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
 import { showModal } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
+import Modal from "../components/Modal";
 
 const containerVariants = {
   hidden: {
@@ -36,11 +37,13 @@ const childVariants = {
 const Order = ({ pizza, modal, dispatch }) => {
   useEffect(() => {
     setTimeout(() => {
+      console.log("show modal");
       dispatch(showModal());
     }, 4000);
   }, [modal]);
   return (
     <Layout>
+      <Modal />
       <motion.div
         className="container order"
         variants={containerVariants}

@@ -27,7 +27,7 @@ const modalVariants = {
 };
 const Modal = ({ showModal, exitModal }) => {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence exitBeforeEnter onExitComplete={exitModal}>
       {showModal && (
         <motion.div
           className="backdrop"
@@ -44,7 +44,7 @@ const Modal = ({ showModal, exitModal }) => {
           >
             <p>Want to make another Pizza?</p>
             <Link href="/">
-              <button onClick={exitModal}>Start Again</button>
+              <button>Start Again</button>
             </Link>
           </motion.div>
         </motion.div>

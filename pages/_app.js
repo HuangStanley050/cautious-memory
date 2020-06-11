@@ -3,7 +3,7 @@ import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
-import Modal from "../components/Modal";
+import { hideModal } from "../store/actions/pizzaActions";
 import App from "next/app";
 
 import { wrapper } from "../store/setupStore";
@@ -18,10 +18,10 @@ function handleExitComplete() {
 function MyApp({ Component, pageProps, store }) {
   const router = useRouter();
   //onExitComplete={handleExitComplete}
+  //console.log(store);
   return (
     <>
       <AnimatePresence exitBeforeEnter>
-        <Modal />
         <Component {...pageProps} route={router.route} key={router.route} />
       </AnimatePresence>
     </>
@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps, store }) {
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
+  //const store = ctx.store;
   const pageProps = Component.getInitialProps
     ? await Component.getInitialProps(ctx)
     : {};
