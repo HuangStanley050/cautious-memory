@@ -1,6 +1,9 @@
 import * as actionTypes from "../actions/actionTypes";
 
-const reducer = (state = { base: "", toppings: [] }, action) => {
+const reducer = (
+  state = { base: "", toppings: [], showModal: false },
+  action
+) => {
   switch (action.type) {
     case actionTypes.ADD_TOP:
       let newToppings;
