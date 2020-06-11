@@ -1,10 +1,20 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const reducer = (
-  state = { base: "", toppings: [], showModal: true },
+  state = { base: "", toppings: [], showModal: false },
   action
 ) => {
   switch (action.type) {
+    case actionTypes.SHOW_MODAL:
+      return {
+        ...state,
+        showModal: true,
+      };
+    case actionTypes.HIDE_MODAL:
+      return {
+        ...state,
+        showModal: false,
+      };
     case actionTypes.ADD_TOP:
       let newToppings;
       if (!state.toppings.includes(action.payload)) {

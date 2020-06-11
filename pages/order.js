@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { motion, AnimatePresence } from "framer-motion";
+import { showModal } from "../store/actions/pizzaActions";
 import Layout from "../components/Layout";
 
 const containerVariants = {
@@ -32,11 +33,12 @@ const childVariants = {
     opacity: 1,
   },
 };
-const Order = ({ pizza }) => {
-  const [showTitle, setShowTitle] = useState(true);
-  setTimeout(() => {
-    setShowTitle(false);
-  }, 4000);
+const Order = ({ pizza, modal, dispatch }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(showModal());
+    }, 4000);
+  }, [modal]);
   return (
     <Layout>
       <motion.div
@@ -62,5 +64,9 @@ const Order = ({ pizza }) => {
 };
 const mapState = (state) => ({
   pizza: state.pizza,
+  modal: state.pizza.showModal,
 });
+// const mapDispatch = (dispatch) => ({
+//   showM: () => dispatch(showModal()),
+// });
 export default connect(mapState)(Order);

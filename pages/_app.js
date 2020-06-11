@@ -3,6 +3,7 @@ import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
+import Modal from "../components/Modal";
 import App from "next/app";
 
 import { wrapper } from "../store/setupStore";
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps, store }) {
   return (
     <>
       <AnimatePresence exitBeforeEnter>
+        <Modal />
         <Component {...pageProps} route={router.route} key={router.route} />
       </AnimatePresence>
     </>
