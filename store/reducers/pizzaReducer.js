@@ -14,6 +14,8 @@ const reducer = (
       return {
         ...state,
         showModal: false,
+        base: "",
+        toppings: [],
       };
     case actionTypes.ADD_TOP:
       let newToppings;

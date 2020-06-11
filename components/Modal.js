@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { connect } from "react-redux";
+import { hideModal } from "../store/actions/pizzaActions";
 
 const backdropVariants = {
   visible: {
@@ -11,8 +12,20 @@ const backdropVariants = {
     opacity: 0,
   },
 };
-
-const Modal = ({ showModal }) => {
+const modalVariants = {
+  hidden: {
+    y: "-100vh",
+    opacity: 0,
+  },
+  visible: {
+    y: "200px",
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+    },
+  },
+};
+const Modal = ({ showModal, exitModal }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       {showModal && (
@@ -21,7 +34,20 @@ const Modal = ({ showModal }) => {
           variants={backdropVariants}
           animate="visible"
           initial="hidden"
-        ></motion.div>
+          exit="hidden"
+        >
+          <motion.div
+            className="modal"
+            variants={modalVariants}
+            animate="visible"
+            initial="hidden"
+          >
+            <p>Want to make another Pizza?</p>
+            <Link href="/">
+              <button onClick={exitModal}>Start Again</button>
+            </Link>
+          </motion.div>
+        </motion.div>
       )}
     </AnimatePresence>
   );
@@ -29,4 +55,7 @@ const Modal = ({ showModal }) => {
 const mapState = (state) => ({
   showModal: state.pizza.showModal,
 });
-export default connect(mapState)(Modal);
+const mapDispatch = (dispatch) => ({
+  exitModal: () => dispatch(hideModal()),
+});
+export default connect(mapState, mapDispatch)(Modal);
