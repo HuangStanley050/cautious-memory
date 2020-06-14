@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import Loader from "../components/Loader";
 import { AnimatePresence, motion } from "framer-motion";
 
 const buttonVariants = {
@@ -39,12 +40,14 @@ const Home = () => {
         exit="exit"
       >
         <h2>Welcome to Pizza Joint</h2>
+
         <Link href="/base">
           <motion.button variants={buttonVariants} whileHover="hover">
             Create Your Pizza
           </motion.button>
         </Link>
       </motion.div>
+      <Loader />
     </Layout>
   );
 };
