@@ -36,12 +36,7 @@ const Modal = ({ showModal, exitModal }) => {
           initial="hidden"
           exit="hidden"
         >
-          <motion.div
-            className="modal"
-            variants={modalVariants}
-            animate="visible"
-            initial="hidden"
-          >
+          <motion.div className="modal" variants={modalVariants}>
             <p>Want to make another Pizza?</p>
             <Link href="/">
               <button>Start Again</button>
